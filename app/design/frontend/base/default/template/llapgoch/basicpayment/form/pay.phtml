@@ -1,0 +1,24 @@
+<?php
+// The ID using the code on the UL is important - this is what Magento will use to hide and display the 
+// Form with javascript - it should be set to display:none by default
+?>
+<?php $_code = $this->getMethod()->getCode() ?>
+<ul class="form-list" id="payment_form_<?php echo $_code ?>" style="display:none;">
+    <li>
+        <label for="<?php echo $_code ?>_check_no" class="required"><em>*</em><?php echo $this->__('Check No#') ?></label>
+        <span class="input-box">
+            <input type="text" title="<?php echo $this->__('Check No#') ?>" class="input-text required-entry" id="<?php echo $_code ?>_check_no" name="payment[check_no]" value="<?php echo $this->htmlEscape($this->getInfoData('check_no')) ?>" />
+        </span>
+    </li>
+    <li>
+        <label for="<?php echo $_code ?>_check_date" class="required"><em>*</em><?php echo $this->__('Check Date:') ?></label>
+        <span class="input-box">
+            <input type="text" title="<?php echo $this->__('Check Date:') ?>" class="input-text required-entry" id="<?php echo $_code ?>_check_date" name="payment[check_date]" value="<?php echo $this->htmlEscape($this->getInfoData('check_date')) ?>" />
+        </span>
+    </li>
+	<li>
+		<div>
+		    <?php echo $this->getMethod()->getConfigData('message');?>
+		</div>
+	</li>
+</ul>

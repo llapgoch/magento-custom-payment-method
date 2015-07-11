@@ -1,0 +1,69 @@
+<?xml version="1.0"?>
+<config>
+	<modules>
+		<Llapgoch_BasicPayment>
+			<version>0.1.0</version>
+		</Llapgoch_BasicPayment>
+	</modules>
+	
+	<global>
+		<helpers>
+			<llapgoch_basicpayment>
+				<class>Llapgoch_BasicPayment_Helper</class>
+			</llapgoch_basicpayment>
+		</helpers>
+		
+		<blocks>
+			<llapgoch_basicpayment>
+				<class>Llapgoch_BasicPayment_Block</class>
+			</llapgoch_basicpayment>
+		</blocks>
+		
+		<models>
+			<llapgoch_basicpayment>
+				<class>Llapgoch_BasicPayment_Model</class>
+			</llapgoch_basicpayment>
+		</models>
+		
+		<!-- Tell magento what data to copy from the quote payment object to the order payment object -->
+		<fieldsets>
+			<sales_convert_quote_payment>
+				<check_no>
+					<to_order_payment>*</to_order_payment>
+				</check_no>
+				<check_date>
+					<to_order_payment>*</to_order_payment>
+				</check_date>
+			</sales_convert_quote_payment>
+		</fieldsets>
+		
+		<!-- Create our columns in the sales_flat_order_payment table here -->
+		<resources>
+			<llapgoch_basicpayment_setup>
+				<setup>
+					<module>Llapgoch_BasicPayment</module>
+				</setup>
+			</llapgoch_basicpayment_setup>
+		</resources>
+	</global>
+	
+	<default>
+		<payment>
+			<llapgoch_pay>
+				<!-- used in determining whether to display the payment type -->
+				<active>1</active>
+				<title>LLAP-Goch Pay</title>
+				<order_status>processing</order_status>
+				<!-- the model which gets instantiated for this payment type -->
+				<model>llapgoch_basicpayment/payment</model>
+				<!-- This requires the billing address to be in the specified country -->
+				<allowspecific>1</allowspecific>
+				<specificcountry>GB,US</specificcountry>
+				<!-- Only show this order type for orders with the values between the following -->
+				<min_order_total>1</min_order_total>
+				<max_order_total>6000</max_order_total>
+				<message>Thank you for using LLAP-Goch Pay!</message>
+			</llapgoch_pay>
+		</payment>
+	</default>
+</config>
