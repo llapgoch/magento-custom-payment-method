@@ -1,6 +1,6 @@
 <?php
 class Llapgoch_BasicPayment_Model_Payment extends Mage_Payment_Model_Method_Abstract{
-	// Code to match up with the groups node in system.xml
+	// Code to match up with the groups node in default.xml
 	protected $_code = "llapgoch_pay";
 	// This is the block that's displayed on the checkout
 	protected $_formBlockType = 'llapgoch_basicpayment/form_pay';

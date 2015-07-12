@@ -8,11 +8,13 @@ class Llapgoch_BasicPayment_Block_Info_Pay extends Mage_Payment_Block_Info{
            }
            $info = $this->getInfo();
            $transport = new Varien_Object();
-           $transport = parent::_prepareSpecificInformation($transport);
+           
            $transport->addData(array(
                Mage::helper('payment')->__('Check No#') => $info->getCheckNo(),
                Mage::helper('payment')->__('Check Date') => $info->getCheckDate()
            ));
+		   
+		   $transport = parent::_prepareSpecificInformation($transport);
            return $transport;
        }
 }
